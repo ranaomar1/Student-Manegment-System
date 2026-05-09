@@ -1,0 +1,345 @@
+/* ── Shell ─────────────────────────────────────── */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 240px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 12px;
+  z-index: 100;
+  box-shadow: 2px 0 16px rgba(0, 0, 0, 0.06);
+  transition: width 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: visible;
+}
+
+.sidebar.collapsed {
+  width: 68px;
+}
+
+/* ── Inner scroll area (clips nav text without hiding collapse btn) */
+.sidebar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* Clip text overflow inside sidebar without overflow:hidden on sidebar itself */
+.nav,
+.darkBtn,
+.brand {
+  overflow: hidden;
+}
+
+/* profileWrapper must NOT have overflow:hidden — popup needs to escape */
+.profileWrapper {
+  overflow: visible;
+}
+
+.collapseBtn {
+  position: absolute;
+  top: 20px;
+  right: -14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+  line-height: 1;
+}
+.collapseBtn:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.12);
+}
+
+/* ── Brand ──────────────────────────────────────── */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 6px 10px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.brand:hover { background: var(--hover); }
+
+.logo {
+  height: 38px;
+  width: 38px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.brandName {
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--accent);
+  letter-spacing: -0.4px;
+  line-height: 1.1;
+}
+.brandSub {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* ── Divider ────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 6px 0;
+  flex-shrink: 0;
+}
+
+/* ── Nav ────────────────────────────────────────── */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-decoration: none;
+}
+.navItem:hover {
+  background: var(--hover);
+  color: var(--text);
+}
+.navItem.active {
+  background: rgba(var(--accent-rgb), 0.1);
+  color: var(--accent);
+  font-weight: 700;
+}
+.navItem.highlight {
+  background: var(--accent);
+  color: #fff !important;
+  margin-top: 6px;
+}
+.navItem.highlight:hover {
+  opacity: 0.88;
+}
+
+.navIcon { font-size: 16px; flex-shrink: 0; width: 20px; text-align: center; }
+.navLabel { overflow: hidden; text-overflow: ellipsis; }
+
+/* ── Dark mode btn ──────────────────────────────── */
+.darkBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-sub);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  text-align: left;
+}
+.darkBtn:hover { background: var(--hover); color: var(--text); }
+
+/* ── Profile wrapper ────────────────────────────── */
+.profileWrapper {
+  position: relative;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.profileBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--hover);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  width: 100%;
+  transition: border-color 0.15s, background 0.15s;
+  overflow: hidden;
+}
+.profileBtn:hover { border-color: var(--accent); background: rgba(var(--accent-rgb), 0.05); }
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  text-align: left;
+  flex: 1;
+  overflow: hidden;
+}
+.profileName {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.profileRole { font-size: 10px; font-weight: 700; line-height: 1.1; }
+
+.chevron {
+  font-size: 9px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+/* ── Profile popup ──────────────────────────────── */
+.profilePopup {
+  position: fixed;
+  bottom: 80px;
+  left: 12px;
+  width: 260px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18), 0 2px 12px rgba(0,0,0,0.10);
+  overflow: hidden;
+  animation: popUp 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 9999;
+}
+
+@keyframes popUp {
+  from { opacity: 0; transform: translateY(10px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.popupHeader {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 16px 16px 12px;
+}
+.popupAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.popupName  { font-size: 14px; font-weight: 800; color: var(--text); }
+.popupEmail { font-size: 11px; color: var(--text-muted); margin: 2px 0 6px; }
+.popupBadge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.popupDivider { height: 1px; background: var(--border); }
+
+.popupDetail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 12px;
+  color: var(--text-sub);
+  font-weight: 600;
+}
+
+.popupPerms { padding: 10px 16px 6px; }
+.popupPermsTitle {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.permRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-sub);
+  padding: 3px 0;
+}
+.permYes { font-size: 13px; }
+.permNo  { font-size: 13px; opacity: 0.5; }
+
+.logoutBtn {
+  width: 100%;
+  padding: 13px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ef4444;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.logoutBtn:hover { background: #fee2e2; }
+
+/* ── Responsive ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 68px;
+  }
+  .sidebar:not(.collapsed) {
+    width: 240px;
+  }
+}

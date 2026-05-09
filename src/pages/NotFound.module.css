@@ -1,0 +1,24 @@
+.container {
+  max-width: 500px; margin: 80px auto; padding: 48px 32px;
+  text-align: center;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 24px;
+}
+.code {
+  font-size: 96px; font-weight: 900; color: var(--accent);
+  opacity: 0.15; line-height: 1;
+}
+.emoji { font-size: 48px; margin: -20px 0 12px; }
+.title { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.sub { color: var(--text-muted); font-size: 14px; margin-bottom: 28px; }
+.buttons { display: flex; gap: 12px; justify-content: center; }
+.home {
+  background: var(--accent); color: #fff; border: none;
+  padding: 10px 22px; border-radius: 10px; font-weight: 600; font-size: 14px;
+  transition: opacity 0.15s;
+}
+.home:hover { opacity: 0.85; }
+.back {
+  background: var(--hover); color: var(--text-sub); border: 1px solid var(--border);
+  padding: 10px 18px; border-radius: 10px; font-size: 14px;
+}

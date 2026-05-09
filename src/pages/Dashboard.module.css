@@ -1,0 +1,60 @@
+.container { max-width: 1000px; margin: 0 auto; padding: 32px 24px; }
+.title { font-size: 24px; font-weight: 800; color: var(--text); margin-bottom: 4px; letter-spacing: -0.4px; }
+.subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+.metricsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.midRow { display: grid; grid-template-columns: 1fr 300px; gap: 16px; margin-bottom: 28px; }
+.chartCard {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; padding: 20px 24px;
+}
+.chart { display: flex; align-items: flex-end; gap: 14px; height: 130px; margin-top: 12px; }
+.barGroup { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; height: 100%; justify-content: flex-end; }
+.bar { width: 100%; border-radius: 6px 6px 0 0; transition: height 0.6s cubic-bezier(.34,1,.64,1); min-height: 4px; }
+.barCount { font-size: 12px; font-weight: 700; color: var(--text); }
+.barLabel { font-size: 10px; color: var(--text-muted); font-weight: 500; }
+.actionsCol { display: flex; flex-direction: column; gap: 10px; }
+.actionCard {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 14px 16px; text-align: left; display: flex; align-items: center; gap: 12px;
+  transition: all 0.2s; flex: 1;
+}
+.actionCard:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); border-color: var(--accent); }
+.actionIcon { font-size: 20px; flex-shrink: 0; width: 38px; height: 38px; background: var(--hover); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+.actionTitle { font-size: 13px; font-weight: 700; color: var(--text); }
+.actionSub   { font-size: 11px; color: var(--text-sub); margin-top: 1px; }
+.sectionHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.sectionTitle { font-size: 15px; font-weight: 700; color: var(--text); }
+.seeAll { background: none; border: none; color: var(--accent); font-size: 13px; font-weight: 600; cursor: pointer; }
+.recentList { display: flex; flex-direction: column; gap: 8px; }
+.recentItem {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 12px 16px; display: flex; align-items: center; gap: 12px;
+  cursor: pointer; transition: all 0.15s;
+}
+.recentItem:hover { background: var(--hover); border-color: var(--accent); transform: translateX(4px); }
+.recentAvatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(var(--accent-rgb),0.12); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
+}
+.recentInfo { flex: 1; }
+.recentName { font-size: 14px; font-weight: 600; color: var(--text); }
+.recentSub  { font-size: 12px; color: var(--text-sub); margin-top: 2px; }
+.recentArrow { color: var(--text-muted); font-size: 14px; transition: transform 0.15s; }
+.recentItem:hover .recentArrow { transform: translateX(4px); color: var(--accent); }
+.badge { padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+.badgeActive   { background: #d1fae5; color: #065f46; }
+.badgeInactive { background: #fef3c7; color: #92400e; }
+.empty { text-align: center; padding: 40px; color: var(--text-sub); font-size: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; }
+.emptyLink { background: none; border: none; color: var(--accent); font-size: 14px; font-weight: 600; padding: 0; cursor: pointer; }
+.tipRow { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 20px; font-size: 12px; color: var(--text-muted); }
+.kbd { background: var(--hover); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; font-size: 11px; font-family: monospace; color: var(--text-sub); }
+.titleSkeleton {
+  background: linear-gradient(90deg, var(--hover) 25%, var(--border) 50%, var(--hover) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 8px;
+}
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+@media (max-width: 700px) { .midRow { grid-template-columns: 1fr; } }
