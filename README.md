@@ -3,6 +3,7 @@
 A React-based web application for managing students in a university environment. It supports multiple user roles, student CRUD operations, statistics, activity tracking, and more.
 
 ---
+![Test Image](assets/images/studentSystem.png)
 
 ## 📋 Features
 
